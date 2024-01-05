@@ -3,6 +3,9 @@ author: collective-hub
 description: Add or update content in GitHub PR description.
 
 inputs:
+  prNumber:
+    description: The PR number to update. If this isn't provided, it will try to be inferred from the PR number provided in the `pull_request` event, or from the commit SHA.
+    required: true
   content:
     description: Content to append or replace in the PR body.
     required: true
