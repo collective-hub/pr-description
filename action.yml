@@ -1,5 +1,5 @@
 name: Update PR Description
-author: nefrob
+author: collective-hub
 description: Add or update content in GitHub PR description.
 
 inputs:

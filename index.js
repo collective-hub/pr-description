@@ -12,11 +12,16 @@ export const run = async () => {
     const regexFlags = getInput("regexFlags") || "";
     const appendContentOnMatchOnly = getInput("appendContentOnMatchOnly");
     const token = getInput("token", { required: true });
+    const prNumber = getInput("prNumber");
 
     const { owner, repo } = context.repo;
     const octokit = getOctokit(token);
 
-    let prNumber = context.payload.pull_request?.number;
+    if (!prNumber) {
+        // try and get the PR number from the context
+        prNumber = context.payload.pull_request?.number;
+    }
+
     if (!prNumber) {
         // not a pull_request event, try and find the PR number from the commit sha
         const { data: pullRequests } =

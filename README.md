@@ -15,6 +15,7 @@ This action supports `pull_request` and `push` events (where the `push` event oc
 
 ### Inputs
 
+-   `prNumber`: The PR number to update. If this isn't provided, it will try to be inferred from the PR number provided in the `pull_request` event, or from the commit SHA.
 -   `content`: The content to append or replace in the PR body. Can be raw text or a file path. If a file path is provided, `contentIsFilePath` must be set to `"true"`.
 -   `contentIsFilePath`: Whether the `content` input is a file path. Defaults to `"false"`.
 -   `regex`: The regex to match against the PR body and replace with `content`. Defaults to `"---.*"`.
@@ -39,8 +40,9 @@ Note: append mode is the default behavior when no `regex` match is found for bac
                 - name: Checkout
                   uses: actions/checkout@v3
                 - name: Update PR Description
-                  uses: nefrob/pr-description@v1.1.1
+                  uses: collective-hub/pr-description@v1.1.2
                   with:
+                      prNumber: 101
                       content: "Hello there!"
                       regex: ".*"
                       regexFlags: i
@@ -60,7 +62,7 @@ Note: append mode is the default behavior when no `regex` match is found for bac
                 - name: Checkout
                   uses: actions/checkout@v3
                 - name: Update PR Description
-                  uses: nefrob/pr-description@v1.1.1
+                  uses: collective-hub/pr-description@v1.1.2
                   with:
                       content: path/to/file.txt
                       contentIsFilePath: true
@@ -92,7 +94,7 @@ Note: append mode is the default behavior when no `regex` match is found for bac
                 - name: Checkout
                   uses: actions/checkout@v3
                 - name: Update PR Description
-                  uses: nefrob/pr-description@v1.1.1
+                  uses: collective-hub/pr-description@v1.1.2
                   with:
                       content: "<!-- start regex match -->New content!<!-- end regex match -->"
                       regex: "<!-- start regex match -->.*?<!-- end regex match -->"
