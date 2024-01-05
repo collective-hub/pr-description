@@ -12,7 +12,7 @@ export const run = async () => {
     const regexFlags = getInput("regexFlags") || "";
     const appendContentOnMatchOnly = getInput("appendContentOnMatchOnly");
     const token = getInput("token", { required: true });
-    const prNumber = getInput("prNumber");
+    let prNumber = getInput("prNumber");
 
     const { owner, repo } = context.repo;
     const octokit = getOctokit(token);

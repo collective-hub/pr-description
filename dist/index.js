@@ -36772,7 +36772,7 @@ const run = async () => {
     const regexFlags = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("regexFlags") || "";
     const appendContentOnMatchOnly = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("appendContentOnMatchOnly");
     const token = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("token", { required: true });
-    const prNumber = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("prNumber");
+    let prNumber = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("prNumber");
 
     const { owner, repo } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.repo;
     const octokit = (0,_actions_github__WEBPACK_IMPORTED_MODULE_1__.getOctokit)(token);
